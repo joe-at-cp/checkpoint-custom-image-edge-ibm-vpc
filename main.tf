@@ -60,7 +60,7 @@ locals {
 
 resource "ibm_is_image" "cp_gw_custom_image" {
   href             = "${local.gw_image_url}"
-  name             = "${var.gw_image_name}-${lower(var.CP_Version)}"
+  name             = replace("${var.gw_image_name}-${lower(var.CP_Version)}",".","")
   operating_system = "centos-7-amd64"
   resource_group   = "${data.ibm_resource_group.rg.id}"
 
